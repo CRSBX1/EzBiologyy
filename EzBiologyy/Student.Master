@@ -1,0 +1,32 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Student.master.cs" Inherits="EzBiologyy.Student" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>EzBiology</title>
+    <link rel="stylesheet" href="~/Styles/StudentStyle.css" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <div class="bg-circles"><span></span><span></span><span></span></div>
+            <nav>
+            <a class="nav-logo">EzBiology</a>
+            <div class="nav-links">
+                <a><asp:LinkButton runat="server" ID="navHomeStudent" OnClick="NavToDashboard">Home</asp:LinkButton></a>
+                <a><asp:LinkButton runat="server" ID="navCourseStudent" OnClick="NavToCourses">Courses</asp:LinkButton></a>
+                <a><asp:LinkButton runat="server" ID="navGradesStudent" OnClick="NavToGrades">Grades</asp:LinkButton></a>
+                <a><asp:LinkButton runat="server" ID="navAssessmentsStudent" OnClick="NavToAssessments">Assessments</asp:LinkButton></a>
+                <a><asp:LinkButton runat="server" ID="navForumStudent" OnClick="NavToForums">Forums</asp:LinkButton></a>
+                <a><asp:LinkButton runat="server" ID="navLogoutStudent" OnClick="NavToLogout">Log Out</asp:LinkButton></a>
+            </div>
+            </nav>
+            <script src="~/Scripts/StudentScript.js"></script>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+    </form>
+</body>
+</html>

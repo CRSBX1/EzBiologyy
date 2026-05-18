@@ -1,0 +1,26 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Auth.master.cs" Inherits="EzBiology.AuthMaster" %>
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EzBiology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin" />
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English&family=Instrument+Sans:wght@400;500;600;700&family=Inclusive+Sans:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="~/Styles/TeacherStyle.css"  rel="stylesheet" type="text/css" />
+  <link href="~/Styles/AuthStyle.css"  rel="stylesheet" type="text/css" />
+  <asp:ContentPlaceHolder ID="HeadContent" runat="server" />
+</head>
+<body>
+  <!-- Auth pages use a minimal nav: logo + single right link -->
+  <nav class="auth-nav">
+    <a class="logo" href="~/Pages/Home.aspx" runat="server">EzBiology</a>
+    <div class="auth-nav-divider"></div>
+    <a href="~/Pages/Home.aspx" runat="server" id="navRight" class="auth-nav-link">Home</a>
+  </nav>
+  <form id="form1" runat="server">
+    <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+  </form>
+</body>
+</html>

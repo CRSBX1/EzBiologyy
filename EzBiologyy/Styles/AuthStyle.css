@@ -1,0 +1,188 @@
+/* ─── EzBiology – auth.css ───────────────────────────────────────────────── */
+
+/* ── Auth Nav (minimal: logo | divider | single link) ─────────────────────── */
+.auth-nav {
+  background: var(--green-nav);
+  height: 68px;
+  display: flex;
+  align-items: center;
+  padding: 0 36px;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+
+.auth-nav-divider {
+  width: 1px;
+  height: 68px;
+  background: rgba(255,255,255,0.4);
+  margin-left: auto;
+  margin-right: 36px;
+}
+
+.auth-nav-link {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--white);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.auth-nav-link:hover { opacity: 0.8; }
+
+/* ── Auth Page Layout ──────────────────────────────────────────────────────── */
+.auth-page {
+  display: grid;
+  grid-template-columns: 46% 54%;
+  min-height: calc(100vh - 68px);
+  background: var(--white);
+}
+
+/* ── Left Panel (DNA hero) ─────────────────────────────────────────────────── */
+.auth-hero {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 52px 48px;
+}
+
+.auth-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.auth-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.auth-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--green-overlay);
+}
+
+.auth-hero-text {
+  position: relative;
+  z-index: 1;
+}
+
+.auth-hero-text h1 {
+  font-family: 'Inclusive Sans', sans-serif;
+  font-size: 72px;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.auth-hero-text p {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.35;
+}
+
+/* ── Right Panel (form) ────────────────────────────────────────────────────── */
+.auth-form-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 48px 72px;
+  background: var(--white);
+}
+
+.auth-field {
+  margin-bottom: 24px;
+}
+
+.auth-field label {
+  display: block;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--black);
+  margin-bottom: 8px;
+}
+
+.auth-field input {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 18px;
+  color: var(--grey-ph);
+  width: 100%;
+  border: 1px solid var(--black);
+  border-radius: 10px;
+  padding: 14px 18px;
+  box-shadow: 0 4px 4px rgba(0,0,0,0.15);
+  outline: none;
+  background: var(--white);
+  transition: border-color .15s;
+}
+
+.auth-field input:focus {
+  border-color: var(--green-nav);
+  color: var(--black);
+}
+
+.auth-select {
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 18px;
+    color: #6e6e6e;
+    width: 50%;
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 14px 18px;
+    box-shadow: 0 4px 4px rgba(0,0,0,0.15);
+    outline: none;
+    background: #ffffff;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236e6e6e' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px; /* make room for the arrow */
+    cursor: pointer;
+}
+
+.auth-select:focus {
+    border-color: var(--green-nav);
+    color: var(--black);
+}
+
+/* ── Auth Buttons ──────────────────────────────────────────────────────────── */
+.auth-btns {
+  display: flex;
+  gap: 20px;
+  margin-top: 12px;
+}
+
+.auth-btns .btn {
+  font-size: 18px;
+  padding: 14px 40px;
+  border-radius: 15px;
+}
+
+/* ── Validation / Message ──────────────────────────────────────────────────── */
+.auth-message {
+  display: block;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  min-height: 20px;
+}
+
+.auth-validator {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 13px;
+  color: var(--red-btn);
+  display: block;
+  margin-top: 4px;
+}

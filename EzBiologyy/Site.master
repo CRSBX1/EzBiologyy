@@ -1,0 +1,31 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="EzBiology.SiteMaster" %>
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EzBiology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin" />
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="~/Styles/TeacherStyle.css" rel="stylesheet" type="text/css" />
+  <asp:ContentPlaceHolder ID="HeadContent" runat="server" />
+</head>
+<body>
+    <form runat="server">
+  <nav>
+    <a class="logo" href="~/Pages/Home.aspx" runat="server">EzBiology</a>
+    <ul class="nav-links">
+      <li><a><asp:LinkButton ID="navHomeTeach" runat="server" OnClick="NavToHome">Home</asp:LinkButton></a></li>
+      <li><a><asp:LinkButton ID="navCourseTeach" runat="server" OnClick="NavToCourses">Courses</asp:LinkButton></a></li>
+      <li><a><asp:LinkButton ID="navMaterialsTeach" runat="server" OnClick="NavToMaterials">Materials</asp:LinkButton></a></li>
+      <li><a><asp:LinkButton ID="navAssessmentTeach" runat="server" OnClick="NavToAssessments">Assessments</asp:LinkButton></a></li>
+      <li><a><asp:LinkButton ID="navReviewTeach" runat="server" OnClick="NavToReview">Review Students</asp:LinkButton></a></li>
+      <li><a><asp:LinkButton ID="navProfileTeach" runat="server" OnClick="NavToProfile">Profile</asp:LinkButton></a></li>
+      <li><a><asp:LinkButton ID="navLogoutTeach" runat="server" OnClick="NavToLogout">Log out</asp:LinkButton></a></li>
+    </ul>
+  </nav>
+  <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+    </form>
+</body>
+</html>
