@@ -1,6 +1,5 @@
 using System;
 using System.Web.UI;
-using System.Web.UI.HtmlControls;
 
 namespace EzBiology
 {
@@ -8,12 +7,14 @@ namespace EzBiology
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session == null) {
+            if (Session == null)
+            {
                 Response.Redirect("Login.aspx");
             }
         }
 
-        protected void NavToHome(object sender, EventArgs e){
+        protected void NavToHome(object sender, EventArgs e)
+        {
             Response.Redirect("Home.aspx");
         }
 

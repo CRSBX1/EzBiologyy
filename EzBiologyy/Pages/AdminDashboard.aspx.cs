@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace EzBiologyy.Pages
 {
@@ -15,7 +10,8 @@ namespace EzBiologyy.Pages
             {
                 greetingLbl.Text = "Hello, Admin " + Session["Username"].ToString();
             }
-            else{
+            else
+            {
                 Response.Redirect("Login.aspx");
             }
         }

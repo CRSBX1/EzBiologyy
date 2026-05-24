@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace EzBiologyy
 {
@@ -14,7 +9,8 @@ namespace EzBiologyy
 
         }
 
-        protected void NavToHome(object sender, EventArgs e){
+        protected void NavToHome(object sender, EventArgs e)
+        {
             Response.Redirect("AdminDashboard.aspx");
         }
         protected void NavToUsers(object sender, EventArgs e)

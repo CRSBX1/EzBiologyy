@@ -69,6 +69,15 @@ namespace EzBiology.Pages
         protected global::System.Web.UI.WebControls.TextBox txtMaterialName;
 
         /// <summary>
+        /// txtCategory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCategory;
+
+        /// <summary>
         /// hfRteContent control.
         /// </summary>
         /// <remarks>
