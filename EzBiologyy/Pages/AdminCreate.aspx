@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminCreate.aspx.cs" Inherits="EzBiologyy.Pages.AdminCreate" MasterPageFile="~/Admin.Master"%>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminCreate.aspx.cs" Inherits="EzBiologyy.Pages.AdminCreate" MasterPageFile="~/Admin.Master"%>
 
 <asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
@@ -22,20 +22,20 @@
               <div class="form-grid">
                 <div class="field-group">
                   <label>Full Name</label>
-                  <asp:TextBox runat="server" ID="fullName"  />
+                  <asp:TextBox runat="server" ID="fullName" ClientIDMode="Static" />
                 </div>
                 <div class="field-group">
                   <label>Username</label>
-                  <asp:TextBox runat="server" ID="username"  />
+                  <asp:TextBox runat="server" ID="username" ClientIDMode="Static" />
                   <span class="hint">Must be unique. No spaces allowed.</span>
                 </div>
                 <div class="field-group">
                   <label>Password</label>
-                  <asp:TextBox runat="server" ID="password" TextMode="Password" />
+                  <asp:TextBox runat="server" ID="password" TextMode="Password" ClientIDMode="Static" />
                 </div>
                 <div class="field-group">
                   <label>Confirm Password</label>
-                  <asp:TextBox runat="server" ID="confirmPassword" TextMode="Password" />
+                  <asp:TextBox runat="server" ID="confirmPassword" TextMode="Password" ClientIDMode="Static" />
                 </div>
               </div>
 
@@ -46,14 +46,14 @@
               <div class="form-grid">
                 <div class="field-group">
                   <label>Age</label>
-                  <asp:TextBox runat="server" ID="age" TextMode="Number" />
+                  <asp:TextBox runat="server" ID="age" TextMode="Number" ClientIDMode="Static" />
                 </div>
                 <div class="field-group">
                   <label>Gender</label>
-                  <asp:DropDownList runat="server" ID="gender">
-                      <asp:ListItem>Male</asp:ListItem>
-                      <asp:ListItem>Female</asp:ListItem>
-                      <asp:ListItem>Prefer not to say</asp:ListItem>
+                  <asp:DropDownList runat="server" ID="gender" ClientIDMode="Static">
+                      <asp:ListItem Text="Male" Value="Male" />
+                      <asp:ListItem Text="Female" Value="Female" />
+                      <asp:ListItem Text="Prefer not to say" Value="Other" />
                   </asp:DropDownList>
                 </div>
               </div>
@@ -63,26 +63,28 @@
               <!-- Role -->
               <div class="section-label">Assign Role</div>
               <div class="role-options">
-                <div class="role-option selected" onclick="selectRole(this)">
+                <div class="role-option selected" data-role="Student" onclick="selectRole(this)">
                   <div class="role-icon">🎓</div>
                   <span>Student</span>
                 </div>
-                <div class="role-option" onclick="selectRole(this)">
+                <div class="role-option" data-role="Teacher" onclick="selectRole(this)">
                   <div class="role-icon">📖</div>
                   <span>Teacher</span>
                 </div>
-                <div class="role-option" onclick="selectRole(this)">
+                <div class="role-option" data-role="Admin" onclick="selectRole(this)">
                   <div class="role-icon">⚙️</div>
                   <span>Administrator</span>
                 </div>
               </div>
+              <asp:HiddenField runat="server" ID="hfRole" ClientIDMode="Static" Value="Student" />
 
-              <!-- Error message -->
-              <div id="errorMsg" style="color:#E53935; font-size:13px; font-family:'Inter',sans-serif; margin-top:16px; text-align:center; display:none;"></div>
+              <!-- Message -->
+              <asp:Label runat="server" ID="lblMessage" ClientIDMode="Static"
+                style="display:block; font-size:13px; font-family:'Inter',sans-serif; margin-top:16px; text-align:center;" />
 
               <div class="btn-row">
-                <button class="btn btn-red" onclick="clearForm()">Clear</button>
-                <button class="btn btn-green" onclick="submitForm()">Create User</button>
+                <button type="button" class="btn btn-red" onclick="clearForm()">Clear</button>
+                <asp:Button runat="server" ID="btnCreate" CssClass="btn btn-green" Text="Create User" OnClick="btnCreate_Click" />
               </div>
             </div>
 
@@ -93,6 +95,7 @@
           function selectRole(el) {
             document.querySelectorAll('.role-option').forEach(r => r.classList.remove('selected'));
             el.classList.add('selected');
+            document.getElementById('hfRole').value = el.getAttribute('data-role');
           }
 
           function clearForm() {
@@ -101,33 +104,13 @@
             document.getElementById('password').value = '';
             document.getElementById('confirmPassword').value = '';
             document.getElementById('age').value = '';
-            document.getElementById('gender').value = '';
-            document.getElementById('errorMsg').style.display = 'none';
-            document.querySelectorAll('.role-option').forEach((r,i) => {
-              r.classList.toggle('selected', i === 0);
+            document.getElementById('gender').selectedIndex = 0;
+            document.querySelectorAll('.role-option').forEach(r => {
+              r.classList.toggle('selected', r.getAttribute('data-role') === 'Student');
             });
-          }
-
-          function submitForm() {
-            const name = document.getElementById('fullName').value.trim();
-            const user = document.getElementById('username').value.trim();
-            const pass = document.getElementById('password').value;
-            const conf = document.getElementById('confirmPassword').value;
-            const age  = document.getElementById('age').value;
-            const gen  = document.getElementById('gender').value;
-            const err  = document.getElementById('errorMsg');
-
-            if (!name || !user || !pass || !conf || !age || !gen) {
-              err.textContent = '⚠️ Please fill in all fields before creating a user.';
-              err.style.display = 'block'; return;
-            }
-            if (pass !== conf) {
-              err.textContent = '⚠️ Passwords do not match. Please try again.';
-              err.style.display = 'block'; return;
-            }
-            err.style.display = 'none';
-            alert('User created successfully! Redirecting to Manage Users...');
-            window.location = 'admin-manage-users.html';
+            document.getElementById('hfRole').value = 'Student';
+            var msg = document.getElementById('lblMessage');
+            if (msg) msg.innerHTML = '';
           }
         </script>
     </asp:Content>
