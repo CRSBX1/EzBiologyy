@@ -1,40 +1,58 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StudentGrades.aspx.cs" Inherits="EzBiologyy.Pages.StudentGrades" MasterPageFile="~/Student.Master"%>
-<asp:Content ContentPlaceHolderID="HeadContent" runat="server" />
+﻿<%@ Page Language="C#" AutoEventWireup="true"
+CodeBehind="StudentGrades.aspx.cs"
+Inherits="EzBiologyy.Pages.StudentGrades"
+MasterPageFile="~/Student.Master" %>
+
+<asp:Content ContentPlaceHolderID="HeadContent" runat="server">
+</asp:Content>
+
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
-    <div class="content">
-        <h1>Grades</h1>
-        <p>View your assessment results.</p>
 
-        <div class="table-card">
+<div class="content">
 
-            <table>
-                <tr>
-                    <th>Assessment</th>
-                    <th>Grade</th>
-                    <th>Percentage</th>
-                </tr>
+<h1>My Grades</h1>
 
-                <tr>
-                    <td>Cell Structure Quiz</td>
-                    <td>A</td>
-                    <td>92%</td>
-                </tr>
+<br /><br />
 
-                <tr>
-                    <td>Plant Growth Lab Report</td>
-                    <td>B+</td>
-                    <td>85%</td>
-                </tr>
+<asp:GridView
+ID="gradesGrid"
+runat="server"
+AutoGenerateColumns="false"
+Width="800px"
+GridLines="None"
+CellPadding="10">
 
-                <tr>
-                    <td>Photosynthesis Assignment</td>
-                    <td>A-</td>
-                    <td>88%</td>
-                </tr>
+<HeaderStyle
+BackColor="#1B4332"
+ForeColor="White"
+Font-Bold="true"/>
 
-            </table>
+<RowStyle
+BackColor="White"
+ForeColor="Black"/>
 
-        </div>
+<AlternatingRowStyle
+BackColor="#F2F2F2"
+ForeColor="Black"/>
 
-    </div>
+<Columns>
+
+<asp:BoundField
+DataField="AssessmentName"
+HeaderText="Assessment"/>
+
+<asp:BoundField
+DataField="Grade"
+HeaderText="Grade"/>
+
+<asp:BoundField
+DataField="GradePoints"
+HeaderText="Points"/>
+
+</Columns>
+
+</asp:GridView>
+
+</div>
+
 </asp:Content>
