@@ -91,7 +91,27 @@
             btn.classList.remove("active");
         });
 
-        button.classList.add("active");
-    }
-    </script>
+      </div>
+    </div>
 </asp:Content>
+<asp:Repeater ID="courseRepeater" runat="server">
+
+    <ItemTemplate>
+
+        <div class="course-card">
+
+            <div class="course-bottom">
+                <h3>
+                    <%# Eval("CourseName") %>
+                </h3>
+
+                <span class="status in-progress">
+                    Enrolled
+                </span>
+            </div>
+
+        </div>
+
+    </ItemTemplate>
+
+</asp:Repeater>
