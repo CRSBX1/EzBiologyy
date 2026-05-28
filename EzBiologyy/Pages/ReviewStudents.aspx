@@ -42,8 +42,8 @@
       <asp:DropDownList ID="ddlCategory" runat="server"
         AutoPostBack="true"
         OnSelectedIndexChanged="ddlCategory_SelectedIndexChanged">
-        <asp:ListItem Text="Quiz"       Value="Quiz" />
-        <asp:ListItem Text="Assessment" Value="Assessment" />
+        <asp:ListItem Text="Quiz"       Value="quiz" />
+        <asp:ListItem Text="Assessment" Value="assess" />
       </asp:DropDownList>
     </div>
     <div class="grades-table-wrap">

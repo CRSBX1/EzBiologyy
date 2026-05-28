@@ -1,6 +1,7 @@
-<%@ Page Title="Materials" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="Materials.aspx.cs" Inherits="EzBiology.Pages.Materials" %>
+<%@ Page Title="Materials" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="Materials.aspx.cs" Inherits="EzBiology.Pages.Materials" ValidateRequest="false"%>
 
 <asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContent" runat="server">
+    <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet" />
 </asp:Content>
 
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
@@ -38,21 +39,15 @@
         placeholder="Neuroscience overview" style="max-width:340px;" />
     </div>
 
+    <div style="margin-bottom:20px;">
+      <label class="field-label">Material Category</label>
+      <asp:TextBox ID="txtCategory" runat="server" CssClass="field-input"
+        placeholder="Neuroscience" style="max-width:340px;" />
+    </div>
+
     <div>
       <label class="field-label">Content</label>
-      <div class="rte-toolbar">
-        <button type="button" class="rte-btn bold"      onclick="document.execCommand('bold')">B</button>
-        <button type="button" class="rte-btn italic"    onclick="document.execCommand('italic')">I</button>
-        <button type="button" class="rte-btn underline" onclick="document.execCommand('underline')">U</button>
-        <div class="rte-divider"></div>
-        <button type="button" class="rte-btn" onclick="document.execCommand('justifyLeft')">&#8676;</button>
-        <button type="button" class="rte-btn" onclick="document.execCommand('justifyCenter')">&#8677;</button>
-        <button type="button" class="rte-btn" onclick="document.execCommand('justifyFull')">&#8644;</button>
-        <div class="rte-divider"></div>
-        <button type="button" class="rte-btn" onclick="document.execCommand('insertUnorderedList')">&#8226;&#8801;</button>
-        <button type="button" class="rte-btn" onclick="document.execCommand('insertOrderedList')">1&#8801;</button>
-      </div>
-      <div id="rteContent" class="rte-area" contenteditable="true" oninput="syncRTE()"></div>
+      <div id="quillEditor" style="height:300px; border-radius: 0 0 8px 8px;"></div>
       <asp:HiddenField ID="hfRteContent" runat="server" />
     </div>
 
@@ -60,16 +55,43 @@
       <asp:Button ID="btnContentClear"  runat="server" Text="Clear"
         CssClass="btn btn-red"   OnClick="btnContentClear_Click" />
       <asp:Button ID="btnContentUpload" runat="server" Text="Upload"
-        CssClass="btn btn-green" OnClick="btnContentUpload_Click"
-        OnClientClick="syncRTE()" />
+        CssClass="btn btn-green" OnClick="btnContentUpload_Click" />
     </div>
   </div>
 
-  <script>
-    function syncRTE() {
-      var hf = document.getElementById('<%= hfRteContent.ClientID %>');
-      var ed = document.getElementById('rteContent');
-      if (hf && ed) hf.value = ed.innerHTML;
-    }
-  </script>
+    <script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
+    <script>
+        var quill = new Quill('#quillEditor', {
+            theme: 'snow',
+            modules: {
+                toolbar: [
+                    ['bold', 'italic', 'underline'],
+                    [{ 'align': [] }],
+                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                    [{ 'header': [1, 2, 3, false] }],
+                    ['clean']
+                ]
+            }
+        });
+
+        // Restore content if PostBack brought data back
+        var hf = document.getElementById('<%= hfRteContent.ClientID %>');
+        if (hf && hf.value) {
+            quill.root.innerHTML = hf.value;
+        }
+
+        // Sync Quill HTML into hidden field before every PostBack
+        function syncRTE() {
+            if (hf) hf.value = quill.root.innerHTML;
+        }
+
+        // Also wire the Upload button's OnClientClick
+        var uploadBtn = document.getElementById('<%= btnContentUpload.ClientID %>');
+        if (uploadBtn) uploadBtn.addEventListener('click', syncRTE);
+
+        var clearBtn = document.getElementById('<%= btnContentClear.ClientID %>');
+        if (clearBtn) clearBtn.addEventListener('click', function () {
+            quill.setText('');
+        });
+    </script>
 </asp:Content>
