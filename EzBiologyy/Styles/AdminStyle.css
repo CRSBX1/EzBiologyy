@@ -35,7 +35,7 @@ body {
 }
 
 /* ---- FRAME ---- */
-.frame { background: var(--grey-bg); padding: 8px 0 0 0; }
+.frame { background: var(--grey-bg); padding: 0; }
 .frame-label { color: #aaa; font-size: 11px; font-family: 'Inter', sans-serif; padding: 0 10px 6px; }
 
 /* ---- NAVBAR ---- */

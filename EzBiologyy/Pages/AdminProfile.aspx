@@ -20,6 +20,11 @@
             <asp:Label ID="lblMessage" runat="server"
             style="display:block;text-align:center;margin-bottom:20px;font-weight:600;" />
             <div class="field-group" style="margin-bottom:20px;">
+            <label>Full Name</label>
+            <asp:TextBox runat="server" ID="fullName" />
+            </div>
+
+            <div class="field-group" style="margin-bottom:20px;">
             <label>Username</label>
             <asp:TextBox runat="server" ID="username" />
             </div>
@@ -43,8 +48,9 @@
             <div class="field-group">
                 <label>Gender</label>
                 <asp:DropDownList runat="server" ID="gender">
-                    <asp:ListItem>Male</asp:ListItem>
-                    <asp:ListItem>Female</asp:ListItem>
+                    <asp:ListItem Text="Male" Value="Male" />
+                    <asp:ListItem Text="Female" Value="Female" />
+                    <asp:ListItem Text="Prefer not to say" Value="Other" />
                 </asp:DropDownList>
             </div>
             <div class="field-group">
@@ -56,10 +62,6 @@
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="ddlPwd"
                     ErrorMessage="This field is required" ForeColor="Red" Display="Dynamic" />
             </div>
-            </div>
-
-            <!-- Error -->
-            <div id="errorMsg" style="color:#E53935; font-size:13px; font-family:'Inter',sans-serif; margin-top:8px; text-align:center; display:none;">
             </div>
 
             <div class="btn-row">

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace EzBiologyy
 {
@@ -6,27 +6,27 @@ namespace EzBiologyy
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-        }
-
-        protected void NavToHome(object sender, EventArgs e)
-        {
-            Response.Redirect("AdminDashboard.aspx");
-        }
-        protected void NavToUsers(object sender, EventArgs e)
-        {
-            Response.Redirect("AdminManage.aspx");
-        }
-
-        protected void NavToProfile(object sender, EventArgs e)
-        {
-            Response.Redirect("AdminProfile.aspx");
+            string page = System.IO.Path.GetFileNameWithoutExtension(Request.Path).ToLower();
+            switch (page)
+            {
+                case "admindashboard":
+                    navHomeAdmin.Attributes["class"] = "active";
+                    break;
+                case "adminmanage":
+                case "admincreate":
+                case "adminedit":
+                    navUsersAdmin.Attributes["class"] = "active";
+                    break;
+                case "adminprofile":
+                    navProfileAdmin.Attributes["class"] = "active";
+                    break;
+            }
         }
 
         protected void NavToLogout(object sender, EventArgs e)
         {
             Session.Abandon();
-            Response.Redirect("Login.aspx");
+            Response.Redirect("~/Pages/Login.aspx");
         }
     }
 }

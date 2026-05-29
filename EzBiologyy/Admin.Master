@@ -4,6 +4,7 @@
 
 <html>
 <head runat="server">
+    <meta charset="utf-8" />
     <title>EzBiology</title>
     <link href="~/Styles/AdminStyle.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
@@ -16,10 +17,10 @@
                 <nav class="navbar">
                     <a class="logo">EzBiology</a>
                     <div class="nav-links">
-                        <a><asp:LinkButton runat="server" ID="navHomeAdmin" OnClick="NavToHome">Home</asp:LinkButton></a>
-                        <a><asp:LinkButton runat="server" ID="navUsersAdmin" OnClick="NavToUsers">Users</asp:LinkButton></a>
-                        <a><asp:LinkButton runat="server" ID="navProfileAdmin" OnClick="NavToProfile">Profile</asp:LinkButton></a>
-                        <a><asp:LinkButton runat="server" ID="navLogoutAdmin" OnClick="NavToLogout">Logout</asp:LinkButton></a>
+                        <a runat="server" id="navHomeAdmin" href="~/Pages/AdminDashboard.aspx">Home</a>
+                        <a runat="server" id="navUsersAdmin" href="~/Pages/AdminManage.aspx">Users</a>
+                        <a runat="server" id="navProfileAdmin" href="~/Pages/AdminProfile.aspx">Profile</a>
+                        <asp:LinkButton runat="server" ID="navLogoutAdmin" OnClick="NavToLogout">Logout</asp:LinkButton>
                     </div>
                 </nav>
             </asp:ContentPlaceHolder>
