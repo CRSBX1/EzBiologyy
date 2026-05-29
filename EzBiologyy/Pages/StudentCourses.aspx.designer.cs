@@ -13,5 +13,25 @@ namespace EzBiologyy.Pages
 
     public partial class StudentCourses
     {
+
+        /// <summary>
+        /// courseRepeater control.
+        /// rptEnrolledCourses control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater courseRepeater;
+        protected global::System.Web.UI.WebControls.Repeater rptEnrolledCourses;
+
+        /// <summary>
+        /// rptAvailableCourses control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptAvailableCourses;
     }
 }

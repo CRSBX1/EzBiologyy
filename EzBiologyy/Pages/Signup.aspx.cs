@@ -33,12 +33,13 @@ namespace EzBiology.Pages
                 cmd2.Parameters.AddWithValue("@password", BCrypt.Net.BCrypt.HashPassword(password));
                 cmd2.Parameters.AddWithValue("@role", role);
                 cmd2.Parameters.AddWithValue("@name", fullName);
-                cmd2.Parameters.AddWithValue("@active",1);
-                cmd2.Parameters.AddWithValue("@deleted",0);
+                cmd2.Parameters.AddWithValue("@active", 1);
+                cmd2.Parameters.AddWithValue("@deleted", 0);
                 cmd2.ExecuteNonQuery();
                 Response.Redirect("Login.aspx");
             }
-            else {
+            else
+            {
                 errMessage.Visible = true;
             }
         }

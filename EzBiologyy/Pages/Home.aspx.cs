@@ -1,11 +1,23 @@
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.Reflection;
 using System.Web.UI.WebControls;
 
 namespace EzBiology.Pages
 {
     public partial class Home : System.Web.UI.Page
     {
+        private SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+        private string getQuery =
+            "SELECT UserID, FullName, " +
+            "ROUND(AVG(CASE WHEN AssessmentType = 'quiz' THEN GradePoints END), 2) AS AverageQuizPoints, " +
+            "ROUND(AVG(CASE WHEN AssessmentType = 'assess' THEN GradePoints END), 2) AS AverageAssessmentPoints " +
+            "FROM Users INNER JOIN Grades ON Grades.StudentUserID=Users.UserID " +
+            "INNER JOIN Assessments ON Grades.AssessmentID = Assessments.AssessmentID GROUP BY UserID, FullName;";
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["Username"] == null)
@@ -18,6 +30,7 @@ namespace EzBiology.Pages
                 // TODO: Replace with real DB call
                 gvStudentPerformance.DataSource = GetStudentPerformance();
                 gvStudentPerformance.DataBind();
+                labelTeacherName.Text = Session["Username"].ToString();
             }
         }
 
@@ -33,29 +46,30 @@ namespace EzBiology.Pages
 
         private List<StudentPerformanceRow> GetStudentPerformance()
         {
-            return new List<StudentPerformanceRow>
+            SqlCommand cmd = new SqlCommand(getQuery, conn);
+            DataTable dt = new DataTable();
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            adapter.Fill(dt);
+            List<StudentPerformanceRow> studentPerformanceRows = new List<StudentPerformanceRow>();
+            foreach (DataRow dr in dt.Rows)
             {
-                new StudentPerformanceRow { StudentId = "S000001", Name = "Herbert II",       AvgQuiz = 87.6,  AvgAssess = 90  },
-                new StudentPerformanceRow { StudentId = "S000002", Name = "John Hammer",      AvgQuiz = 69.5,  AvgAssess = 95  },
-                new StudentPerformanceRow { StudentId = "S000003", Name = "Jack Hammer",      AvgQuiz = 74.3,  AvgAssess = 80  },
-                new StudentPerformanceRow { StudentId = "S000004", Name = "Richard Lionheart",AvgQuiz = 100,   AvgAssess = 100 },
-                new StudentPerformanceRow { StudentId = "S000005", Name = "Naoya",            AvgQuiz = 20,    AvgAssess = 10  },
-                new StudentPerformanceRow { StudentId = "S000006", Name = "Herbert III",      AvgQuiz = 80,    AvgAssess = 80  },
-                new StudentPerformanceRow { StudentId = "S000007", Name = "Gilbert",          AvgQuiz = 95.4,  AvgAssess = 88  },
-                new StudentPerformanceRow { StudentId = "S000008", Name = "Thia",             AvgQuiz = 92.6,  AvgAssess = 95  },
-                new StudentPerformanceRow { StudentId = "S000009", Name = "Alucard",          AvgQuiz = 55.1,  AvgAssess = 90  },
-                new StudentPerformanceRow { StudentId = "S000010", Name = "Trevor Bel",       AvgQuiz = 73,    AvgAssess = 88  },
-                new StudentPerformanceRow { StudentId = "S000011", Name = "Sypha Bel",        AvgQuiz = 85.6,  AvgAssess = 99  },
-                new StudentPerformanceRow { StudentId = "S000012", Name = "Saint Germaine",   AvgQuiz = 96.2,  AvgAssess = 100 },
-            };
+                studentPerformanceRows.Add(new StudentPerformanceRow
+                {
+                    StudentId = dr["UserID"].ToString(),
+                    Name = dr["FullName"].ToString(),
+                    AvgQuiz = Convert.ToDouble(dr["AverageQuizPoints"]),
+                    AvgAssess = Convert.ToDouble(dr["AverageAssessmentPoints"])
+                });
+            }
+            return studentPerformanceRows;
         }
     }
 
     public class StudentPerformanceRow
     {
         public string StudentId { get; set; }
-        public string Name      { get; set; }
-        public double AvgQuiz   { get; set; }
+        public string Name { get; set; }
+        public double AvgQuiz { get; set; }
         public double AvgAssess { get; set; }
     }
 }
