@@ -1,6 +1,4 @@
-using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -50,8 +48,8 @@ namespace EzBiology.Pages
             if (!Page.IsValid) return;
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text;
-            string age      = txtAge.Text;
-            string gender   = ddlGender.SelectedValue;
+            string age = txtAge.Text;
+            string gender = ddlGender.SelectedValue;
 
             try
             {

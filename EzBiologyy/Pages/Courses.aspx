@@ -15,6 +15,11 @@
         <asp:Button ID="btnHeroClear" runat="server" Text="Clear"
           CssClass="btn btn-red" OnClick="btnClear_Click" />
       </div>
+        <div class="field-group" style="margin-bottom:1%;">
+            <label class="field-label">Course Name</label>  
+            <asp:TextBox ID="courseNameTxt" runat="server" CssClass="field-input field-id"
+            placeholder="" />
+        </div>
       <div class="course-panels">
         <div class="course-panel">
           <h3>Course Materials</h3>
@@ -47,12 +52,13 @@
       <div class="field-group">
         <label class="field-label">Category</label>
         <asp:DropDownList ID="ddlCategory" runat="server" CssClass="field-select field-cat">
-          <asp:ListItem Text="Course Materials" Value="CourseMaterials" />
+            <asp:ListItem Text="All" Value="All" />
+          <asp:ListItem Text="Learning Materials" Value="Learning Materials" />
           <asp:ListItem Text="Quiz"             Value="Quiz" />
           <asp:ListItem Text="Assessment"       Value="Assessment" />
         </asp:DropDownList>
       </div>
-      <asp:Button ID="btnSearch" runat="server" Text="" CssClass="btn-search"
+      <asp:Button ID="btnSearch" runat="server" Text=&#x1F50E;&#xFE0F; CssClass="btn-search"
         OnClick="btnSearch_Click" ToolTip="Search" />
     </div>
     <div class="comp-table-wrap">
@@ -61,10 +67,16 @@
         AutoGenerateColumns="false"
         GridLines="None"
         OnRowDataBound="gvComponents_RowDataBound"
-        DataKeyNames="Id">
+        DataKeyNames="Id,Name,Category">
         <Columns>
           <asp:BoundField DataField="Id"   HeaderText="ID" />
           <asp:BoundField DataField="Name" HeaderText="Name" />
+          <asp:BoundField DataField="Category" HeaderText="Category" />
+            <asp:TemplateField HeaderText="Select">
+               <ItemTemplate>
+                 <asp:CheckBox ID="chkSelect" runat="server" />
+               </ItemTemplate>
+            </asp:TemplateField>
         </Columns>
       </asp:GridView>
     </div>

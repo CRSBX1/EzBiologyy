@@ -11,8 +11,8 @@
       <div class="hero-overlay"></div>
     </div>
     <div class="hero-content">
-      <h1>Hello, <asp:Literal ID="litTeacherName" runat="server" Text="" /></h1>
-      <h2>Your&nbsp; Students' Performance Overview</h2>
+      <h1>Hello, <asp:Label ID="labelTeacherName" runat="server" Text="" /></h1>
+      <h2>Student Performances Overview</h2>
       <div class="perf-table-wrap">
         <asp:GridView ID="gvStudentPerformance" runat="server"
           CssClass="data-table perf-table"
@@ -34,11 +34,11 @@
     <h2>Create and Publish</h2>
     <div class="create-cards">
       <a class="create-card" href="~/Pages/Materials.aspx" runat="server">
-        <img src="https://www.figma.com/api/mcp/asset/2c4d624e-050f-4e01-aec8-3d61f8d9ea43" alt="Learning Materials" />
+        <img src="../Assets/studying.jpg" alt="Learning Materials" />
         <span>Learning<br />Materials</span>
       </a>
       <a class="create-card" href="~/Pages/Courses.aspx" runat="server">
-        <img src="https://www.figma.com/api/mcp/asset/37d22049-0578-4611-89cf-f185e241cd12" alt="Courses" />
+        <img src="../Assets/users.jpeg" alt="Courses" />
         <span>Courses</span>
       </a>
     </div>

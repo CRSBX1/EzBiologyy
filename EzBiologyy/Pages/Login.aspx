@@ -10,7 +10,7 @@
     <!-- ── Left: DNA hero ── -->
     <div class="auth-hero">
       <div class="auth-hero-bg">
-        <img src="https://www.figma.com/api/mcp/asset/c419e8bf-0808-4895-ab02-33f83984d0db" alt="" />
+        <img src="~/Assets/eukaryotic-cells-eukaryote-definition-structure-and-characteristics-397841-960x540.jpg" alt="" />
         <div class="auth-hero-overlay"></div>
       </div>
       <div class="auth-hero-text">

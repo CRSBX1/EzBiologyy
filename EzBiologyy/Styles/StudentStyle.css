@@ -462,3 +462,134 @@ th, td {
     border: none;
     margin: 5px;
 }
+
+.profile-page {
+    margin: 0 auto;
+    max-width: 760px;
+    padding: 36px 40px;
+    align-self: center;
+}
+
+.profile-page h1 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.profile-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin-top: 24px;
+    max-width: 680px;
+}
+
+.profile-field {
+    margin-bottom: 18px;
+}
+
+.profile-field label,
+.profile-label {
+    display: block;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 7px;
+}
+
+.profile-field .field-input,
+.field-input,
+.age-input,
+.gender-select {
+    width: 100%;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 13px;
+    padding: 10px 12px;
+    outline: none;
+    transition: border-color 0.15s, background 0.15s;
+}
+
+.profile-field .field-input:focus,
+.field-input:focus,
+.age-input:focus,
+.gender-select:focus {
+    border-color: rgba(92,186,110,0.5);
+    background: rgba(255,255,255,0.10);
+}
+
+.profile-field .field-input {
+    max-width: none;
+}
+
+.inline-fields {
+    display: grid;
+    grid-template-columns: 120px 180px 180px;
+    gap: 18px;
+    align-items: end;
+    margin-bottom: 26px;
+}
+
+.age-input {
+    width: 100%;
+}
+
+.gender-select {
+    min-width: 0;
+    cursor: pointer;
+}
+
+.gender-select option {
+    background: var(--bg-dark);
+    color: var(--text);
+}
+
+.profile-btns {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+    margin-top: 24px;
+}
+
+.profile-btns .save-btn,
+.profile-btns .edit-btn,
+.profile-btns .cancel-btn,
+.save-btn,
+.edit-btn,
+.cancel-btn {
+    border: none;
+    border-radius: 8px;
+    font-family: var(--font);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 9px 18px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.save-btn,
+.edit-btn {
+    background: var(--accent);
+    color: #1c2e24;
+}
+
+.save-btn:hover,
+.edit-btn:hover {
+    background: var(--accent-light);
+}
+
+.cancel-btn {
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid rgba(255,255,255,0.20);
+}
+
+.cancel-btn:hover {
+    background: rgba(255,255,255,0.08);
+    color: var(--text);
+}

@@ -1,8 +1,5 @@
 using System;
-using System.Configuration;
-using System.Data.SqlClient;
 using System.Web.UI;
-using System.Web.UI.HtmlControls;
 
 namespace EzBiology
 {
@@ -11,7 +8,7 @@ namespace EzBiology
         protected void Page_Load(object sender, EventArgs e)
         {
             string currentPage = System.IO.Path.GetFileNameWithoutExtension(Request.FilePath);
-            
+
             // On the Login page → right link says "Sign Up" and points to Signup
             // On the Signup page → right link says "Login" and points to Login
             // On any other auth page → falls back to "Home"
@@ -19,11 +16,11 @@ namespace EzBiology
             {
                 case "login":
                     navRight.InnerText = "Sign Up";
-                    navRight.HRef      = ResolveUrl("~/Pages/Signup.aspx");
+                    navRight.HRef = ResolveUrl("~/Pages/Signup.aspx");
                     break;
                 case "signup":
                     navRight.InnerText = "Login";
-                    navRight.HRef      = ResolveUrl("~/Pages/Login.aspx");
+                    navRight.HRef = ResolveUrl("~/Pages/Login.aspx");
                     break;
             }
         }

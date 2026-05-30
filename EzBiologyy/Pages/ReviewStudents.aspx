@@ -11,7 +11,7 @@
     </div>
     <div class="hero-content">
       <h1>Review Student Performance</h1>
-      <p class="sub">To see if they're properly listening</p>
+      <p class="sub">To see if they're studying properly</p>
       <div class="student-selector">
         <label>Select Student:</label>
         <asp:DropDownList ID="ddlStudent" runat="server"
@@ -42,8 +42,8 @@
       <asp:DropDownList ID="ddlCategory" runat="server"
         AutoPostBack="true"
         OnSelectedIndexChanged="ddlCategory_SelectedIndexChanged">
-        <asp:ListItem Text="Quiz"       Value="Quiz" />
-        <asp:ListItem Text="Assessment" Value="Assessment" />
+        <asp:ListItem Text="Quiz"       Value="quiz" />
+        <asp:ListItem Text="Assessment" Value="assess" />
       </asp:DropDownList>
     </div>
     <div class="grades-table-wrap">

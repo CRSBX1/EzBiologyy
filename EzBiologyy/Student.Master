@@ -21,6 +21,7 @@
                 <a><asp:LinkButton runat="server" ID="navGradesStudent" OnClick="NavToGrades">Grades</asp:LinkButton></a>
                 <a><asp:LinkButton runat="server" ID="navAssessmentsStudent" OnClick="NavToAssessments">Assessments</asp:LinkButton></a>
                 <a><asp:LinkButton runat="server" ID="navForumStudent" OnClick="NavToForums">Forums</asp:LinkButton></a>
+                <a><asp:LinkButton runat="server" ID="navProfileStudent" OnClick="NavToProfile">Profile</asp:LinkButton></a>
                 <a><asp:LinkButton runat="server" ID="navLogoutStudent" OnClick="NavToLogout">Log Out</asp:LinkButton></a>
             </div>
             </nav>
