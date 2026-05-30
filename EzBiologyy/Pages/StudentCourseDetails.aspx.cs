@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web.UI.WebControls;
 
 namespace EzBiologyy.Pages
 {
@@ -11,12 +12,11 @@ namespace EzBiologyy.Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // TEMPORARY TESTING ONLY
-            // Login is handled by group leader.
-            // if (Session["Username"] == null)
-            // {
-            //     Response.Redirect("Login.aspx");
-            // }
+
+            if (Session["Username"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
 
             if (!IsPostBack)
             {
@@ -112,6 +112,18 @@ namespace EzBiologyy.Pages
                         lblNoMaterials.Visible = dt.Rows.Count == 0;
                     }
                 }
+            }
+        }
+
+        public void openMaterial(object sender, EventArgs e) {
+            HiddenField hfFilePath = (HiddenField)((Button)sender).FindControl("hfFilePath");
+            string filePath = hfFilePath.Value;
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                Response.Redirect(filePath);
+            }
+            else {
+                Response.Write("File can't be opened, contact website admin.");
             }
         }
 

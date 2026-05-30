@@ -10,6 +10,8 @@ namespace EzBiology.Pages
         private string passwordQuery = "SELECT Password FROM Users WHERE Username=@username";
         private string roleQuery = "SELECT Role FROM Users WHERE Username=@username";
         private string userIDQuery = "SELECT UserID FROM Users WHERE Username=@username";
+        private string activeQuery = "SELECT IsActive FROM Users WHERE Username=@username";
+        private string deletedQuery = "SELECT IsDeleted FROM Users WHERE Username=@username";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,6 +25,17 @@ namespace EzBiology.Pages
             string password = txtPassword.Text;
 
             conn.Open();
+
+            SqlCommand cmdDeletedCheck = new SqlCommand(deletedQuery, conn);
+            cmdDeletedCheck.Parameters.AddWithValue("@username", username);
+            bool isDeleted = Convert.ToBoolean(cmdDeletedCheck.ExecuteScalar());
+            if (isDeleted)
+            {
+                errorMessage.Text = "Your account has been deleted.";
+                errorMessage.Visible = true;
+                return;
+            }
+
             SqlCommand cmd = new SqlCommand(passwordQuery, conn);
             cmd.Parameters.AddWithValue("@username", username);
             object pwdResult = cmd.ExecuteScalar();
@@ -32,6 +45,17 @@ namespace EzBiology.Pages
                 bool isPassword = BCrypt.Net.BCrypt.Verify(password, dbPassword);
                 if (isPassword)
                 {
+                    //check if user is active
+                    SqlCommand cmdActiveCheck = new SqlCommand(activeQuery, conn);
+                    cmdActiveCheck.Parameters.AddWithValue("@username", username);
+                    bool isActive = Convert.ToBoolean(cmdActiveCheck.ExecuteScalar());
+                    if (!isActive)
+                    {
+                        errorMessage.Text = "Your account is inactive.";
+                        errorMessage.Visible = true;
+                        return;
+                    }
+
                     //get role
                     SqlCommand cmd2 = new SqlCommand(roleQuery, conn);
                     cmd2.Parameters.AddWithValue("@username", username);

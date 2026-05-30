@@ -71,6 +71,7 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Select.Pdf, Version=26.2.0.0, Culture=neutral, PublicKeyToken=e0ae9f6e27a97018, processorArchitecture=MSIL">
       <HintPath>..\packages\Select.Pdf.26.2.0\lib\net40\Select.Pdf.dll</HintPath>
     </Reference>
@@ -148,6 +149,7 @@
     <Content Include="Pages\Login.aspx" />
     <Content Include="Pages\Materials.aspx" />
     <Content Include="Pages\Profile.aspx" />
+    <Content Include="Pages\StudentProfile.aspx" />
     <Content Include="Pages\TakeQuiz.aspx" />
     <Content Include="Pages\QuizDetails.aspx" />
     <Content Include="Pages\ReviewStudents.aspx" />
@@ -271,6 +273,13 @@
     </Compile>
     <Compile Include="Pages\Profile.aspx.designer.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\StudentProfile.aspx.cs">
+      <DependentUpon>StudentProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\StudentProfile.aspx.designer.cs">
+      <DependentUpon>StudentProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\TakeQuiz.aspx.cs">
       <DependentUpon>TakeQuiz.aspx</DependentUpon>

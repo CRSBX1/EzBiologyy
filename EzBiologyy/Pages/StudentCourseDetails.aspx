@@ -57,6 +57,10 @@
                                         <div>
                                             <div class="acc-item-name"><%# Eval("MaterialName") %></div>
                                             <div class="acc-item-meta"><%# Eval("MaterialType") %></div>
+                                            <div class="acc-item-meta">
+                                                <asp:HiddenField ID="hfFilePath" runat="server" Value='<%# Eval("FilePath") %>'/>
+                                                <asp:Button runat="server" Text="Open material" ID="OpenMaterialBtn" OnClick="openMaterial" CssClass="mark-btn"></asp:Button>
+                                            </div>
                                         </div>
                                     </div>
                                     <button type="button" class="mark-btn" onclick="toggleDone(this)">Mark as done</button>

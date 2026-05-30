@@ -9,7 +9,7 @@
         <div class="page-desc">Browse and manage your biology courses.</div>
 
         <div class="tab-bar">
-          <button type="button" class="tab-btn active" onclick="switchTab('enrolled', this)">My enrolled courses</button>
+          <button type="button" class="tab-btn" onclick="switchTab('enrolled', this)">My enrolled courses</button>
           <button type="button" class="tab-btn" onclick="switchTab('available', this)">Available courses</button>
         </div>
 
@@ -80,20 +80,19 @@
           </div>
         </div>
     <script>
-    function switchTab(tabName, button) {
-        document.getElementById("tab-enrolled").style.display = "none";
-        document.getElementById("tab-available").style.display = "none";
+        function switchTab(tabName, button) {
+            document.getElementById("tab-enrolled").style.display = "none";
+            document.getElementById("tab-available").style.display = "none";
 
-        document.getElementById("tab-" + tabName).style.display = "block";
+            document.getElementById("tab-" + tabName).style.display = "block";
 
-        var buttons = document.querySelectorAll(".tab-btn");
-        buttons.forEach(function (btn) {
-            btn.classList.remove("active");
-        });
+            var buttons = document.querySelectorAll(".tab-btn");
+            buttons.forEach(function (btn) {
+                btn.classList.remove("active");
+            });
+        }
+    </script>
 
-      </div>
-    </div>
-</asp:Content>
 <asp:Repeater ID="courseRepeater" runat="server">
 
     <ItemTemplate>
@@ -115,3 +114,4 @@
     </ItemTemplate>
 
 </asp:Repeater>
+</asp:Content>

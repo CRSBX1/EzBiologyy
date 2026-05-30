@@ -17,6 +17,11 @@ namespace EzBiologyy.Pages
         object sender,
         EventArgs e)
         {
+            if (Session["Username"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
+
             if (!IsPostBack)
             {
                 LoadQuiz();
@@ -65,8 +70,8 @@ namespace EzBiologyy.Pages
 
                     TimerSeconds =
                     type == "Quiz"
-                    ? 120
-                    : 300;
+                    ? 600
+                    : 1200;
                 }
 
                 reader.Close();
@@ -140,7 +145,7 @@ namespace EzBiologyy.Pages
                 questionHidden.Value);
 
 
-                if (questionType == "FillBlank")
+                if (questionType == "sa")
                 {
                     mcqPanel.Visible = false;
                     fillPanel.Visible = true;
@@ -197,7 +202,7 @@ namespace EzBiologyy.Pages
         EventArgs e)
         {
             int studentID =
-            EzBiologyy.UserSession.StudentID;
+            Convert.ToInt32(Session["UserID"]);
 
             int assessmentID =
             Convert.ToInt32(
@@ -227,7 +232,7 @@ namespace EzBiologyy.Pages
 
                     totalQuestions++;
 
-                    if (type.Value == "MCQ")
+                    if (type.Value == "mc" || type.Value == "tf")
                     {
                         RadioButtonList list =
                         (RadioButtonList)item.FindControl(

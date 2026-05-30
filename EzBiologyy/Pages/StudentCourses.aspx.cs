@@ -9,22 +9,18 @@ namespace EzBiologyy.Pages
     public partial class StudentCourses : System.Web.UI.Page
     {
         private readonly string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
-
-        // Temporary test student ID.
-        // Later replace this with Session["UserID"] after login is confirmed.
-        private int studentId = 3;
+        private int studentId;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // TEMPORARY TESTING ONLY
-            // Login is handled by group leader.
-            // if (Session["Username"] == null)
-            // {
-            //     Response.Redirect("Login.aspx");
-            // }
-
-            if (!IsPostBack)
+            if (Session["Username"] == null)
             {
+                Response.Redirect("Login.aspx");
+            }
+            studentId = Convert.ToInt32(Session["UserID"]);
+            if (!IsPostBack)
+            {    
+                System.Diagnostics.Debug.WriteLine(Session["UserID"]);
                 LoadEnrolledCourses();
                 LoadAvailableCourses();
             }
@@ -118,7 +114,7 @@ namespace EzBiologyy.Pages
                         cmd.Parameters.AddWithValue("@CourseID", courseId);
                         cmd.Parameters.AddWithValue("@StudentUserID", studentId);
 
-                        con.Open();
+                        con.Open(); 
                         cmd.ExecuteNonQuery();
                     }
                 }

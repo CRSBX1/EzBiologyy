@@ -10,13 +10,12 @@ namespace EzBiologyy.Pages
         ConfigurationManager.ConnectionStrings["ConnectionString"]
         .ConnectionString;
 
-        protected void Page_Load(
-        object sender,
-        EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
-            // TEST USER SWITCH
-            Session["UserID"] = 1002;
-            Session["Username"] = "student1";
+            if(Session["Username"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
 
             if (!IsPostBack)
             {
@@ -46,8 +45,8 @@ namespace EzBiologyy.Pages
                 WHEN
                 (
                     SELECT COUNT(*)
-                    FROM Assessments A
-                    WHERE A.CourseID=CE.CourseID
+                    FROM CourseAssessments CA
+                    WHERE CA.CourseID=CE.CourseID
                 )
 
                 =
@@ -55,13 +54,13 @@ namespace EzBiologyy.Pages
                 (
                     SELECT COUNT(*)
 
-                    FROM Assessments A
+                    FROM CourseAssessments CA
 
                     INNER JOIN Grades G
-                    ON A.AssessmentID=G.AssessmentID
+                    ON CA.AssessmentID=G.AssessmentID
 
                     WHERE
-                    A.CourseID=CE.CourseID
+                    CA.CourseID=CE.CourseID
                     AND G.StudentUserID=@StudentID
                 )
 

@@ -11,7 +11,7 @@
     </div>
     <div class="hero-content">
       <h1>Review Student Performance</h1>
-      <p class="sub">To see if they're properly listening</p>
+      <p class="sub">To see if they're studying properly</p>
       <div class="student-selector">
         <label>Select Student:</label>
         <asp:DropDownList ID="ddlStudent" runat="server"

@@ -11,6 +11,11 @@ namespace EzBiologyy.Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Username"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
+
             if (!IsPostBack)
             {
                 LoadQuizInfo();
@@ -58,9 +63,7 @@ namespace EzBiologyy.Pages
             }
         }
 
-        protected void startBtn_Click(
-object sender,
-EventArgs e)
+        protected void startBtn_Click(object sender, EventArgs e)
         {
             int assessmentID =
             Convert.ToInt32(

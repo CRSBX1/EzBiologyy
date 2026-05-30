@@ -47,12 +47,12 @@
         </div>
         <div class="field-group">
             <label>New Password</label>
-            <asp:TextBox runat="server" ID="password" TextMode="Password" ClientIDMode="Static" />
-            <span class="hint">Only fill if you want to change the password.</span>
+            <asp:TextBox runat="server" ID="password" TextMode="Password" ClientIDMode="Static" Enabled="false"/>
+            <span class="hint">Admins aren't authorized to change the passwords of existing users.</span>
         </div>
         <div class="field-group">
             <label>Confirm New Password</label>
-            <asp:TextBox runat="server" ID="confirmPassword" TextMode="Password" ClientIDMode="Static" />
+            <asp:TextBox runat="server" ID="confirmPassword" TextMode="Password" ClientIDMode="Static" Enabled="false" />
         </div>
         </div>
 

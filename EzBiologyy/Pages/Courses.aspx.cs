@@ -53,7 +53,6 @@ namespace EzBiology.Pages
                              c.Name.ToLower().Contains(query)))
                 .ToList();
             BindComponentTable(results);
-            lblMessage.Text = "";
         }
 
         protected void btnAdd_Click(object sender, EventArgs e)
@@ -92,10 +91,14 @@ namespace EzBiology.Pages
             RefreshPanels();
 
             if (addedCount > 0)
+            {
+                lblMessage.ForeColor = System.Drawing.Color.Green;
                 lblMessage.Text = $"{addedCount} component(s) added successfully.";
-            else
+            }
+            else { 
+                lblMessage.ForeColor = System.Drawing.Color.Red;
                 lblMessage.Text = "Please select at least one component to add.";
-
+            }
             // Rebind current filtered results so highlight updates
             btnSearch_Click(sender, e);
         }
@@ -112,6 +115,12 @@ namespace EzBiology.Pages
 
         protected void btnCreate_Click(object sender, EventArgs e)
         {
+            if (SelectedComponents.Count == 0) {
+                lblMessage.Text = "A minimum of one component must be added.";
+                lblMessage.ForeColor = System.Drawing.Color.Red;
+                return;
+            }
+
             string courseName = courseNameTxt.Text.Trim();
             if (string.IsNullOrWhiteSpace(courseName))
             {

@@ -34,6 +34,10 @@ namespace EzBiologyy
             Response.Redirect("StudentForum.aspx");
         }
 
+        protected void NavToProfile(object sender, EventArgs e) {
+            Response.Redirect("StudentProfile.aspx");
+        }
+
         protected void NavToLogout(object sender, EventArgs e)
         {
             Session.Abandon();

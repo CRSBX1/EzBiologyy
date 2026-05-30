@@ -9,19 +9,18 @@ namespace EzBiologyy.Pages
     {
         private readonly string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
 
-        private int studentId = 3;
+        private int studentId;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // TEMPORARY TESTING ONLY
-            // Login is handled by group leader.
-            // if (Session["Username"] == null)
-            // {
-            //     Response.Redirect("Login.aspx");
-            // }
-
+            if (Session["Username"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
+            studentId = Convert.ToInt32(Session["UserID"]);
             if (!IsPostBack)
             {
+                System.Diagnostics.Debug.WriteLine(Session["UserID"]);
                 LoadThread();
                 LoadReplies();
             }

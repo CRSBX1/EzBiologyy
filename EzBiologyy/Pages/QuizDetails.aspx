@@ -10,10 +10,10 @@ MasterPageFile="~/Student.Master"%>
 
 <div class="content">
 
-<h1>Quiz Details</h1>
+<h1>Quiz/Assessment Details</h1>
 
 <p style="color:white;">
-Review the quiz information below before you begin.
+Review the quiz/assessment information below before you begin.
 </p>
 
 <br/>
@@ -23,7 +23,7 @@ style="padding:40px;max-width:900px;">
 
 <div style="margin-bottom:30px;">
 
-<h3>Quiz Title</h3>
+<h3>Quiz/Assessment Title</h3>
 
 <h2>
 <asp:Label

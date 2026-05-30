@@ -15,6 +15,11 @@ namespace EzBiologyy.Pages
         object sender,
         EventArgs e)
         {
+            if (Session["Username"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
+
             if (!IsPostBack)
             {
                 LoadAssessments();
@@ -23,8 +28,7 @@ namespace EzBiologyy.Pages
 
         private void LoadAssessments()
         {
-            int studentID =
-            EzBiologyy.UserSession.StudentID;
+            int studentID = Convert.ToInt32(Session["UserID"]);
 
             using (SqlConnection conn =
             new SqlConnection(connectionString))
@@ -43,32 +47,26 @@ CASE
 
 WHEN G.GradeID IS NOT NULL
 THEN 'Submitted'
-
-WHEN
-(
-    @StudentID=1002
-    AND
-    A.AssessmentName IN
-    (
-        'Genetics Worksheet',
-        'Human Body Quiz',
-        'Human Systems Assessment'
-    )
-)
-THEN 'Upcoming'
-
 ELSE 'Open'
 
 END AS Status
 
-FROM Assessments A
+FROM CourseAssessments CA
 
-LEFT JOIN Courses C
-ON A.CourseID=C.CourseID
+INNER JOIN CourseEnrollments CE
+ON CA.CourseID=CE.CourseID
+
+INNER JOIN Courses C
+ON CA.CourseID=C.CourseID
+
+INNER JOIN Assessments A
+ON CA.AssessmentID=A.AssessmentID
 
 LEFT JOIN Grades G
 ON A.AssessmentID=G.AssessmentID
 AND G.StudentUserID=@StudentID
+
+WHERE CE.StudentUserID = @StudentID
 
 ORDER BY A.AssessmentID";
 
