@@ -1,4 +1,4 @@
-<%@ Page Title="Materials" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="Materials.aspx.cs" Inherits="EzBiology.Pages.Materials" ValidateRequest="false"%>
+<%@ Page Title="Materials" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="Materials.aspx.cs" Inherits="EzBiology.Pages.Materials" ValidateRequest="false" Async="true"%>
 
 <asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContent" runat="server">
     <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet" />
@@ -12,7 +12,7 @@
     </div>
     <div class="hero-content">
       <h1>Learning Materials</h1>
-      <p class="sub">Create and Publish Knowledge</p>
+      <p class="sub">Publish Knowledge</p>
       <div class="upload-zone">
         <p id="uploadPlaceholder" runat="server">Attach your files here</p>
         <asp:FileUpload ID="fuMaterial" runat="server" />
@@ -56,6 +56,16 @@
         CssClass="btn btn-red"   OnClick="btnContentClear_Click" />
       <asp:Button ID="btnContentUpload" runat="server" Text="Upload"
         CssClass="btn btn-green" OnClick="btnContentUpload_Click" />
+    </div>
+
+    <div style="margin-top: 5%">
+        <h2>Generate your learning material content with AI</h2>
+        <label class="field-label">Prompt</label>
+        <asp:TextBox ID="aiPromptTxt" runat="server" TextMode="MultiLine" CssClass="aiPromptTxt"></asp:TextBox>
+        <div class="materials-action-row">
+            <asp:Button runat="server" ID="generateBtn" Text="Generate Content" CssClass="btn btn-green"
+                OnClick="generateBtn_Click" style="margin-top:12px;" />
+        </div>
     </div>
   </div>
 
