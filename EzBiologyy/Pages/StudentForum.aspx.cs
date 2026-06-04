@@ -17,10 +17,9 @@ namespace EzBiologyy.Pages
             {
                  Response.Redirect("Login.aspx");
             }
-            
+            studentId = Convert.ToInt32(Session["UserID"]);
             if (!IsPostBack)
             {
-                studentId = Convert.ToInt32(Session["UserID"]);
                 LoadForumThreads("");
             }
         }

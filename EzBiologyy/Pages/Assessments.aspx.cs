@@ -120,9 +120,7 @@ namespace EzBiology.Pages
 
             SqlCommand insertQuestionsCmd = new SqlCommand(insertQuestionQuery, conn);
             int assessmentID = Convert.ToInt32(checkCmd.ExecuteScalar());
-
             SqlCommand insertAnswersCmd = new SqlCommand(insertAnswerQuery, conn);
-
 
             foreach (var q in Questions) {
                 insertQuestionsCmd.Parameters.Clear();

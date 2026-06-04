@@ -37,15 +37,20 @@ namespace EzBiologyy.Pages
 
                 string query = @"
 
-SELECT
+SELECT DISTINCT
 A.AssessmentID,
 A.AssessmentName,
 A.AssessmentType,
-C.CourseName,
+STRING_AGG(C.CourseName, ', ') AS CourseName,
 
 CASE
-
-WHEN G.GradeID IS NOT NULL
+WHEN EXISTS
+    (
+        SELECT 1
+        FROM Grades G
+        WHERE G.AssessmentID = A.AssessmentID
+        AND G.StudentUserID = @StudentID
+    )
 THEN 'Submitted'
 ELSE 'Open'
 
@@ -62,11 +67,12 @@ ON CA.CourseID=C.CourseID
 INNER JOIN Assessments A
 ON CA.AssessmentID=A.AssessmentID
 
-LEFT JOIN Grades G
-ON A.AssessmentID=G.AssessmentID
-AND G.StudentUserID=@StudentID
-
 WHERE CE.StudentUserID = @StudentID
+
+GROUP BY
+A.AssessmentID,
+A.AssessmentName,
+A.AssessmentType
 
 ORDER BY A.AssessmentID";
 

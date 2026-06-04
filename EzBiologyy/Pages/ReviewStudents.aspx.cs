@@ -112,26 +112,11 @@ namespace EzBiology.Pages
 
     public class StudentRecord
     {
-        public void setID(string id) {
-            Id = id;
-        }
-        public void setName(string name) {
-            Name = name;
-        }
-        public void setOverallGrade(double grade) {
-            GradePointsToLetterGrade(grade);
-        }
-
-        public void setAvgQuiz(double avgQuiz)
-        {
-            AvgQuiz = avgQuiz;
-        }
-
-        public void setAvgAssess(double avgAssess)
-        {
-            AvgAssess = avgAssess;
-        }
-
+        public void setID(string id) {Id = id;}
+        public void setName(string name) {Name = name;}
+        public void setOverallGrade(double grade) {GradePointsToLetterGrade(grade);}
+        public void setAvgQuiz(double avgQuiz) {AvgQuiz = avgQuiz;}
+        public void setAvgAssess(double avgAssess) {AvgAssess = avgAssess;}
 
         public string Id { get; set; }
         public string Name { get; set; }
