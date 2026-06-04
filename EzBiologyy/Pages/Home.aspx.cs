@@ -27,7 +27,6 @@ namespace EzBiology.Pages
 
             if (!IsPostBack)
             {
-                // TODO: Replace with real DB call
                 gvStudentPerformance.DataSource = GetStudentPerformance();
                 gvStudentPerformance.DataBind();
                 labelTeacherName.Text = Session["Username"].ToString();

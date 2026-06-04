@@ -10,7 +10,7 @@
     <!-- ── Left: DNA hero ── -->
     <div class="auth-hero">
       <div class="auth-hero-bg">
-        <img src="https://www.figma.com/api/mcp/asset/b9a5048a-e375-4368-9a11-0283f1f52398" alt="" />
+        <img src="~/Assets/dna.jpeg" alt="" runat="server"/>
         <div class="auth-hero-overlay"></div>
       </div>
       <div class="auth-hero-text">
@@ -47,7 +47,6 @@
         <div class="auth-field">
           <label for="rolePick">Role</label>
           <asp:DropDownList ID="rolePick" runat="server" CssClass="auth-select">
-              <asp:ListItem Text="Admin" Value="Admin"></asp:ListItem>
               <asp:ListItem Text="Student" Value="Student"></asp:ListItem>
               <asp:ListItem Text="Teacher" Value="Teacher"></asp:ListItem>
           </asp:DropDownList>

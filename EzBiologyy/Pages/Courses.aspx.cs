@@ -99,8 +99,6 @@ namespace EzBiology.Pages
                 lblMessage.ForeColor = System.Drawing.Color.Red;
                 lblMessage.Text = "Please select at least one component to add.";
             }
-            // Rebind current filtered results so highlight updates
-            btnSearch_Click(sender, e);
         }
 
         protected void btnClear_Click(object sender, EventArgs e)

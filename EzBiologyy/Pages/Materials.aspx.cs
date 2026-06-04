@@ -80,7 +80,6 @@ namespace EzBiology.Pages
             string name = Path.GetFileNameWithoutExtension(fuMaterial.FileName);
             string fullPath = Path.Combine(uploadDir, safeName);
             string fullRootPath = Server.MapPath(fullPath);
-            // TODO: Persist file metadata to DB
             conn.Open();
             SqlCommand cmd = new SqlCommand(checkQuery, conn);
             cmd.Parameters.AddWithValue("@name", name.ToLower());
@@ -95,7 +94,7 @@ namespace EzBiology.Pages
             cmd = new SqlCommand(insertQuery, conn);
             cmd.Parameters.AddWithValue("@CreatedByUserID", Session["UserID"]);
             cmd.Parameters.AddWithValue("@MaterialName", name.ToLower());
-            cmd.Parameters.AddWithValue("@MaterialType", "Biology"); //placeholder
+            cmd.Parameters.AddWithValue("@MaterialType", "Biology");
             cmd.Parameters.AddWithValue("@FilePath", fullPath);
             cmd.Parameters.AddWithValue("@CreatedAt", DateTime.Now);
             cmd.ExecuteNonQuery();
@@ -206,7 +205,9 @@ namespace EzBiology.Pages
                 ClientScript.RegisterStartupScript(
                     GetType(),
                     "insertGeneratedContent",
-                    "quill.root.innerHTML = " + safeHtml + "; document.getElementById('" + hfRteContent.ClientID + "').value = " + safeHtml + ";",
+                    "quill.root.innerHTML = " + safeHtml +
+                    "; document.getElementById('" + hfRteContent.ClientID + "').value = " +
+                    safeHtml + ";",
                     true
                 );
 

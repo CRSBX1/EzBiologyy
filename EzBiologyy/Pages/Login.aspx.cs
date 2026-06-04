@@ -6,7 +6,8 @@ namespace EzBiology.Pages
 {
     public partial class Login : System.Web.UI.Page
     {
-        private SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+        private SqlConnection conn = new
+            SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
         private string passwordQuery = "SELECT Password FROM Users WHERE Username=@username";
         private string roleQuery = "SELECT Role FROM Users WHERE Username=@username";
         private string userIDQuery = "SELECT UserID FROM Users WHERE Username=@username";
@@ -86,7 +87,6 @@ namespace EzBiology.Pages
                 }
             }
             errorMessage.Visible = true;
-            //Response.Redirect("~/Pages/Home.aspx");
         }
 
         protected void btnClear_Click(object sender, EventArgs e)

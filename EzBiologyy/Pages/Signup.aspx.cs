@@ -6,8 +6,11 @@ namespace EzBiology.Pages
 {
     public partial class Signup : System.Web.UI.Page
     {
-        private SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-        private string insertQuery = "INSERT INTO Users (Username, Password, Role, FullName, IsActive, IsDeleted) VALUES (@username, @password, @role, @name, @active, @deleted)";
+        private SqlConnection conn = 
+            new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+        private string insertQuery = "INSERT INTO Users (Username, Password, Role, " +
+            "FullName, IsActive, IsDeleted)" +
+            "VALUES (@username, @password, @role, @name, @active, @deleted)";
         private string checkQuery = "SELECT * FROM Users WHERE Username = @username";
 
         protected void Page_Load(object sender, EventArgs e) { }

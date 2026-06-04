@@ -10,7 +10,7 @@
     <!-- ── Left: DNA hero ── -->
     <div class="auth-hero">
       <div class="auth-hero-bg">
-        <img src="~/Assets/eukaryotic-cells-eukaryote-definition-structure-and-characteristics-397841-960x540.jpg" alt="" />
+        <img src="~/Assets/dna.jpeg" alt="" runat="server"/>
         <div class="auth-hero-overlay"></div>
       </div>
       <div class="auth-hero-text">
